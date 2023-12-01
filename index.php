@@ -20,7 +20,7 @@
     </form>
   </section>
 <br>
-<a href="iSesion.php">Inicia sesion aqui</a>
+<a href="idx2.php">Inicia sesion aqui</a>
 <!-- Code injected by live-server -->
 <script>
 	// <![CDATA[  <-- For SVG support
