@@ -2,7 +2,7 @@ drop database if exists `registro_pw`;
 create schema  if not exists `registro_pw` default  character set utf8 collate  utf8_spanish2_ci;
 USE `registro_pw`; 
 
-CREATE TABLE  `registros`(
+CREATE TABLE  `registro`(
 `id` int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,  
 `nombre` text not null,
 `pass` text not null,
