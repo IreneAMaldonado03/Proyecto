@@ -1,29 +1,19 @@
 <?php
- $id = $_POST['id'];
- $username = $_POST['username'];
- $password = $_POST['password'];
+include 'bdatos.php';
 
- $servername = "localhost";
- $database = "my_database";
- $db_username = "root";
- $db_password = "";
+  $id = $_POST['id'];
+  $n_name = $_POST['new_name'];
+  $n_email = $_POST['new_email'];
+  
+  $sql = "UPDATE Users SET name='$n_name', email='$n_email' WHERE id=$id";
+  $result = $conn->query($sql);
 
- // Crear conexión
- $conn = new mysqli($servername, $db_username, $db_password, $database);
+  if ($result) {
+      echo "Registro actualizado con éxito";
+  } else {
+      echo "Hubo un error al actualizar el registro: " . $conn->error;
+  }
 
- // Verificar conexión
- if ($conn->connect_error) {
-     die("Connection failed: " . $conn->connect_error);
- }
-
- // Consulta SQL para actualizar datos
- $sql = "UPDATE Users SET username='$username', password='$password' WHERE id=$id";
-
- if ($conn->query($sql) === TRUE) {
-     echo "Actualización exitosa";
- } else {
-     echo "Error: " . $sql . "<br>" . $conn->error;
- }
-
- $conn->close();
- ?>
+$conn->close();
+header("Location: inicio.php");
+?>

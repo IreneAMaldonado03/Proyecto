@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/materialize.css">
+    <link rel="stylesheet" href="css/style.css">
   <title>Registro</title>
 </head>
-<body style="margin: 1em; display: flex; flex-direction: column; justify-content: center; width: 25em;">
+<body >
   <header>
     <h3>Registro</h3>
   </header>
   <section id="registro">
     <form action="registro.php" method="post">
-      <input type="text" name="nombre" placeholder="Nombre">
-      <input type="text" name="apellido" placeholder="Apellido">
-      <input type="email" name="correo_electronico" placeholder="Correo electrónico">
-      <input type="password" name="contraseña" placeholder="Contraseña">
+      <input type="text" id="name" name="name" placeholder="Nombre">
+      <input type="email" id="email" name="email" placeholder="Correo electrónico">
+      <input type="password" id="password" name="password" placeholder="Contraseña">
       <br><br>
       <button type="submit" >Registrarse</button>
     </form>
@@ -62,3 +61,4 @@
 </script>
 </body>
 </html>
+

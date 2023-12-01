@@ -1,41 +1,75 @@
-<?php
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Inicio Sesion</title>
+</head>
+<body>
 <section id="inicio_de_sesion">
     <h2>Inicio de sesión</h2>
     <form action="iSesion.php" method="post">
-      <input type="email" name="correo_electronico" placeholder="Correo electrónico">
-      <input type="password" name="contraseña" placeholder="Contraseña">
+      <input type="email" name="email" id="email" placeholder="Correo electrónico">
+      <input type="password" name="password" id="password" placeholder="Contraseña">
       <button type="submit">Iniciar sesión</button>
     </form>
   </section>
+</body>
 </html>
 
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+<?php
 
-  $servername = "localhost";
-  $database = "my_database";
-  $db_username = "root";
-  $db_password = "";
+session_start();
+include 'bdatos.php'
 
-  // Crear conexión
-  $conn = new mysqli($servername, $db_username, $db_password, $database);
+// Funcion para validar el usuario
+function validate($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 
-  // Verificar conexión
-  if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-  }
+// Verifica los datos del incio de Sesion
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-  // Verificar datos
-  $sql = "SELECT * FROM Users WHERE username='$username' AND password='$password'";
-  $result = $conn->query($sql);
+    $email = validate($_POST['email']);
+    $password = validate($_POST['password']);
+    $sql = "SELECT * FROM registros WHERE email='$username' AND password='$password'";
+    $resultado = mysqli_query($conn, $sql);
 
-  if ($result->num_rows > 0) {
-      echo "Inicio de sesión exitoso";
-  } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
-  }
+    if (mysqli_num_rows($resultado) === 1) {
 
-  $conn->close();
-  ?>
+        $user = mysqli_fetch_assoc($resultado);
+        if (password_verify($password, $email['password'])) {
+
+            $_SESSION['username'] = $user['email'];
+            $_SESSION['name'] = $user['name'];
+            $_SESSION['id'] = $user['id'];
+
+            header("Location: inicio.php");
+            exit();
+
+        } else {
+
+            header("Location: iSesion.php?error=Credenciales invalidas, por favor revise su escritura");
+            exit();
+
+        }
+    } else {
+
+        header("Location: iSesion.php?error=Usuario no encontrado");
+        exit();
+
+    }
+
+} else {
+
+    header("Location: iSesion.php");
+    exit();
+
+}
+
+?>
