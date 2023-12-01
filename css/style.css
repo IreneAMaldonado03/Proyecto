@@ -1,15 +1,47 @@
-body{
-   
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f5f5f5;
-    margin: 1em;
-    padding: 0;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    width: 25em;
-}
-    
-h2 {
+/* General */
+
+body {
+    font-family: 'Montserrat',sans-serif;
+    font-size: 16px;
     color: #333;
-}
+  }
+  
+  /* Formulario */
+  
+  form {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Etiquetas de formulario */
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Campos de formulario */
+  
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  input[type="submit"], input[type="reset"] {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Mensajes de error */
+  
+  .error {
+    color: red;
+    font-size: 12px;
+  }
