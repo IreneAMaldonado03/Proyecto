@@ -1,5 +1,5 @@
 <?php
-  incluide 'bdatos.php' ;
+  include 'bdatos.php' ;
 
   $name = $_POST['name'];
   $email = $_POST['email'];
@@ -12,7 +12,7 @@
   }
 
   // Insertar datos en la base de datos
-  $sql = "INSERT INTO Registros (name, email, password) VALUES ('$name','$email', '$password')";
+  $sql = "INSERT INTO registro (names, email, pass) VALUES ('$name','$email', '$password')";
 
   if ($conn->query($sql) === TRUE) {
       echo "Registro exitoso";

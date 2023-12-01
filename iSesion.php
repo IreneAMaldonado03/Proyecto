@@ -17,16 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
    $email = validate($_POST['email']);
    $password = validate($_POST['password']);
-   $sql = "SELECT * FROM registros WHERE email='$username' AND password='$password'";
+   $sql = "SELECT * FROM registro WHERE email='$email' AND pass='$password'";
    $resultado = mysqli_query($conn, $sql);
 
    if (mysqli_num_rows($resultado) === 1) {
 
        $user = mysqli_fetch_assoc($resultado);
-       if (password_verify($password, $email['password'])) {
+       if (password_verify($password, $user['password'])) {
 
-           $_SESSION['username'] = $user['email'];
-           $_SESSION['name'] = $user['name'];
+           $_SESSION['email'] = $user['email'];
+           $_SESSION['names'] = $user['names'];
            $_SESSION['id'] = $user['id'];
 
            header("Location: inicio.php");
