@@ -54,3 +54,31 @@ body {
     color: red;
     font-size: 12px;
   }
+
+  /* Tabla */
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  /* Contenedores */
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+  }
+  
+  th {
+    background-color: #f6f6f6;
+    font-weight: bold;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  td {
+    text-align: center;
+  }
