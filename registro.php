@@ -21,5 +21,9 @@
   }
 
   $conn->close();
-  header("Location: /idx2.php");
+  header("Location: idx2.php");
+
   ?>
+
+
+

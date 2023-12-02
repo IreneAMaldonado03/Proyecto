@@ -12,7 +12,7 @@
    <h2>Inicio de sesión</h2>
    <form action="iSesion.php" method="post">
      <input type="email" name="email" id="email" placeholder="Correo electrónico">
-     <input type="password" name="password" id="password" placeholder="Contraseña">
+     <input type="password" name="pass" id="pass" placeholder="Contraseña">
      <button type="submit">Iniciar sesión</button>
    </form>
  </section>

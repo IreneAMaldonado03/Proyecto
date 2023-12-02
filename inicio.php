@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
+if (isset($_SESSION['id']) && isset($_SESSION['email'])) {
 ?>
     
 <!DOCTYPE html>
@@ -14,7 +14,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
     <body>
         <h1>Inicio</h1>
         <main>
-            <a href="cSesion.php" class="logout-button">Cerrar sesión</a>
             <div class="content">
                 <h2>Registros</h2>
                 <div class="table-container">
@@ -24,12 +23,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                 </div>
             </div>
         </main>
+        <br>
+        <br>
+        <a href="cSesion.php" class="logout-button">Cerrar sesión</a>
     </body>
     </html>
     
-    <?php
-    } else {
-        header("Location: sesion.php");
-        exit();
-    }
+<?php
+} else {
+    header("Location: idx2.php");
+    exit();
+}
 ?>

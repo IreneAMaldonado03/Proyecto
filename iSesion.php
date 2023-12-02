@@ -1,8 +1,8 @@
 <?php
-
 session_start();
 include 'bdatos.php';
 
+if (isset($_POST['email']) && isset($_POST['pass'])) {
 // Funcion para validar el usuario
 function validate($data)
 {
@@ -13,17 +13,17 @@ function validate($data)
 }
 
 // Verifica los datos del incio de Sesion
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-   $email = validate($_POST['email']);
-   $password = validate($_POST['password']);
-   $sql = "SELECT * FROM registro WHERE email='$email' AND pass='$password'";
+
+   $email =  validate($_POST['email']);
+   $pass = validate($_POST['pass']);
+   $sql = "SELECT * FROM registro WHERE email='$email' AND pass='$pass'";
    $resultado = mysqli_query($conn, $sql);
 
    if (mysqli_num_rows($resultado) === 1) {
 
        $user = mysqli_fetch_assoc($resultado);
-       if (password_verify($password, $user['password'])) {
+       if ($user['email']===$email && $user['pass'] === $pass){//password_verify($pass, $user['pass'])) {
 
            $_SESSION['email'] = $user['email'];
            $_SESSION['names'] = $user['names'];
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
        } else {
 
-           header("Location: idx2.php?error=Credenciales invalidas, por favor revise su escritura");
+           header("Location: idx2.php?error=Credenciales invalidas");
            exit();
 
        }
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 } else {
 
-   header("Location: idx2.php");
+   header("Location: 'idx2.php'");
    exit();
 
 }

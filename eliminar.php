@@ -2,7 +2,7 @@
 include 'bdatos.php';
 
  $id = $_POST['id'];
- $sql = "DELETE FROM Users WHERE id=$id";
+ $sql = "DELETE FROM registro WHERE id=$id";
 
  $result = $conn->query($sql);
 
@@ -12,7 +12,7 @@ include 'bdatos.php';
       echo "Hubo un error al eliminar el registro: " . $conn->error;
   }
 
- $stmt->close();
+ $conn->close();
  header("Location: inicio.php");
 
 ?>
